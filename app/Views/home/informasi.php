@@ -284,7 +284,7 @@ $kegiatanListDefault = [
         <?php endif; ?>
 
         <?php if (! empty($daftarBeritaBackend)): ?>
-            <div class="grid md:grid-cols-3 gap-8 items-start">
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
                 <?php foreach (
                     $daftarBeritaBackend
                     as $item
@@ -304,24 +304,25 @@ $kegiatanListDefault = [
                     $urlDetail = $buatUrlDetail($item);
                     ?>
 
-                    <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                        <div class="w-full bg-slate-100 flex items-center justify-center overflow-hidden">
+                    <article class="h-full bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] bg-slate-100 overflow-hidden">
                             <img
                                 src="<?= esc(
                                     base_url($gambar),
                                     'attr'
                                 ) ?>"
-                                class="block max-w-full w-auto h-auto object-contain"
-                                style="max-height: 32rem;"
+                                class="absolute inset-0 block w-full h-full object-cover object-center"
                                 alt="<?= esc(
                                     $item['judul']
                                         ?? 'Informasi',
                                     'attr'
                                 ) ?>"
+                                loading="lazy"
+                                decoding="async"
                             >
                         </div>
 
-                        <div class="p-6">
+                        <div class="p-6 flex flex-1 flex-col">
                             <h4 class="text-xl font-bold text-az-green mt-2 mb-3">
                                 <?= esc(
                                     $item['judul']
@@ -343,7 +344,7 @@ $kegiatanListDefault = [
                                     $urlDetail,
                                     'attr'
                                 ) ?>"
-                                class="text-az-green font-bold hover:underline"
+                                class="mt-auto pt-2 text-az-green font-bold hover:underline"
                             >
                                 Baca Selengkapnya →
                             </a>
@@ -352,13 +353,13 @@ $kegiatanListDefault = [
                 <?php endforeach; ?>
             </div>
         <?php else: ?>
-            <div class="grid md:grid-cols-3 gap-8 items-start">
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
                 <?php foreach (
                     $kegiatanListDefault
                     as $item
                 ): ?>
-                    <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                        <div class="w-full bg-slate-100 flex items-center justify-center overflow-hidden">
+                    <article class="h-full bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <div class="relative w-full aspect-[4/3] bg-slate-100 overflow-hidden">
                             <img
                                 src="<?= esc(
                                     base_url(
@@ -367,16 +368,17 @@ $kegiatanListDefault = [
                                     ),
                                     'attr'
                                 ) ?>"
-                                class="block max-w-full w-auto h-auto object-contain"
-                                style="max-height: 32rem;"
+                                class="absolute inset-0 block w-full h-full object-cover object-center"
                                 alt="<?= esc(
                                     $item['title'],
                                     'attr'
                                 ) ?>"
+                                loading="lazy"
+                                decoding="async"
                             >
                         </div>
 
-                        <div class="p-6">
+                        <div class="p-6 flex flex-1 flex-col">
                             <span class="text-az-gold text-sm font-semibold uppercase">
                                 <?= esc($item['date']) ?>
                             </span>
@@ -389,7 +391,7 @@ $kegiatanListDefault = [
                                 <?= esc($item['excerpt']) ?>
                             </p>
 
-                            <span class="text-gray-400 font-bold">
+                            <span class="mt-auto pt-2 text-gray-400 font-bold">
                                 Detail belum tersedia
                             </span>
                         </div>
